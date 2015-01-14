@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceGroup name="HotelReservation">
+    <service name="GuestManagementService" targetNamespace="http://sample.com/reservation/guest">
+        <description>Guest management web service</description>
+        <schema schemaNamespace="http://sample.com/reservation/guest/types" elementFormDefaultQualified="true">
+            <mapping namespace="http://sample.com/reservation/guest/types" package="com.sample.reservation.dto"/>
+        </schema>
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/2006/01/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+            <messageReceiver mep="http://www.w3.org/2006/01/wsdl/in-out" class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.sample.reservation.GuestManagementService</parameter>
+        <operation name="addGuest" mep="http://www.w3.org/2006/01/wsdl/in-out">
+            <actionMapping>urn:addGuest</actionMapping>
+            <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+        </operation>
+        <operation name="getGuestDetails" mep="http://www.w3.org/2006/01/wsdl/in-out">
+            <actionMapping>urn:getGuestDetails</actionMapping>
+            <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+        </operation>
+        <operation name="deleteGuest" mep="http://www.w3.org/2006/01/wsdl/in-only">
+            <actionMapping>urn:deleteGuest</actionMapping>
+            <messageReceiver class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+        </operation>
+    </service>
+</serviceGroup>
+
