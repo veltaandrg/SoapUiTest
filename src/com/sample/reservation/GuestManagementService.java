@@ -16,8 +16,16 @@ public class GuestManagementService {
         return guests.get(name);
     }
     
-    public void deleteGuest(String guestName){
-        // not implemented yet
+    public List<String> getNames() {
+        return new ArrayList<>(guests.keySet());
+    }
+
+    public boolean deleteGuest(String guestName){
+        if (!guests.containsKey(guestName)) {
+            return false;
+        }
+        guests.remove(guestName);
+        return true;
     }
 }
 
